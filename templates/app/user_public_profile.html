@@ -51,13 +51,12 @@
             </div>
 
 
-            <div class="table">
-                <table class="table table-white small m-1">
+           <div class="row justify-content-center" >
 
 
-                    <tr>
+
                         {% if object != user %}
-                            <td class="text-center">
+                            <div class="p-2" >
 
 
                                 {% user_is_follow user object.id as is_follow %}
@@ -73,30 +72,29 @@
                                     {% endif %}
                                 </form>
 
-                            </td>
+                            </div>
 
                         {% else %}
 
-                            <td class="text-center">
+                            <div class="p-2">
                                 <a href="{% url 'user-edit-profile' %}" class="btn btn-primary" role="button"
                                    aria-pressed="true">Edit profile</a>
 
-                            </td>
+                            </div>
 
-                            <td class="text-center">
+                            <div class="p-2">
                                 <a href="{% url 'user-following-list' %}" class="btn btn-primary" role="button"
                                    aria-pressed="true">Following users</a>
-                            </td>
+                            </div>
 
                         {% endif %}
 
-                        <td class="text-center">
+                        <div class="p-2">
                             <a href="{% url 'user-tweets' object.slug %}" class="btn btn-primary" role="button"
                                aria-pressed="true">Tweets</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                        </div>
+
+
             </div>
 
 

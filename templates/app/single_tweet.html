@@ -1,6 +1,6 @@
 {% load base_tags %}
 
-<div class="card my-8 m-3">
+<div class="card m-3">
     <div class="card-body">
         <div class=" d-flex justify-content-end">
 
@@ -45,7 +45,7 @@
         <div>
             {% if tweet.image %}
 
-                <div align="center" class="p-2"><img src="{{ tweet.image.url }}"
+                <div align="center" class="p-2"><img class="img-fluid" src="{{ tweet.image.url }}"
                                                      alt="{{ tweet.author.username }}"></div>
             {% endif %}
             <div class="media-body p-2">
