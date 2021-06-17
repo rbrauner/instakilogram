@@ -1,6 +1,6 @@
 {% extends '../base.html' %}
 
-{% block head_title %}Edit tweet{% endblock %}
+{% block head_title %}Edit post{% endblock %}
 
 {% load bootstrap4 %}
 
@@ -8,7 +8,7 @@
 
 
     <div class="card">
-        <h5 class="card-header text-dark">Edit tweet</h5>
+        <h5 class="card-header text-dark">Edit post</h5>
         <div class="card-body">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -20,7 +20,7 @@
                         {% bootstrap_field field %}
                     </div>
                 {% endfor %}
-                <button class="btn btn-primary m-4" type="submit">Edit Tweet</button>
+                <button class="btn btn-primary m-4" type="submit">Edit Post</button>
             </form>
         </div>
     </div>

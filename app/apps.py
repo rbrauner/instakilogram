@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class MinitwitterConfig(AppConfig):
+class InstaKilogramConfig(AppConfig):
     name = 'app'

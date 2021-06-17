@@ -8,48 +8,48 @@
 
 
                 <a class="thumbnail text-left"
-                   href="{% url 'user-public-profile' tweet.author.slug %}">
-                    <img src="{{ tweet.author.avatar.url }}" width="25px" height="25px"
-                         alt="{{ tweet.author.username }}"
+                   href="{% url 'user-public-profile' post.author.slug %}">
+                    <img src="{{ post.author.avatar.url }}" width="25px" height="25px"
+                         alt="{{ post.author.username }}"
                          class="rounded-circle pull-left">
-                </a> <a href="{% url 'user-public-profile'  tweet.author.slug %}"
+                </a> <a href="{% url 'user-public-profile'  post.author.slug %}"
                         style="text-decoration: none">
                 <small class="font-weight-bold m-2 mt-4">
-                    {% if  tweet.author.full_name %}
-                        {{ tweet.author.full_name }}
+                    {% if  post.author.full_name %}
+                        {{ post.author.full_name }}
                     {% endif %}</small>
-                <small class="text-left text-secondary">{{ tweet.author.username }}</small>
+                <small class="text-left text-secondary">{{ post.author.username }}</small>
             </a>
 
             </div>
 
             <div class=" p-2">
-                <small class="pull-right text-right text-dark">{{ tweet.created }}
-                    {% if tweet.edited %}
-                        (Tweet was edited) {% endif %}</small>
+                <small class="pull-right text-right text-dark">{{ post.created }}
+                    {% if post.edited %}
+                        (Post was edited) {% endif %}</small>
             </div>
-            {% if user == tweet.author %}
+            {% if user == post.author %}
                 <a class="btn-sm nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                    data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
                     Options
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'tweet-edit' tweet.id %}">Edit</a>
-                    <a class="dropdown-item" href="{% url 'tweet-delete' tweet.id %}">Delete</a>
+                    <a class="dropdown-item" href="{% url 'post-edit' post.id %}">Edit</a>
+                    <a class="dropdown-item" href="{% url 'post-delete' post.id %}">Delete</a>
                 </div>
 
             {% endif %}
         </div>
         <hr>
         <div>
-            {% if tweet.image %}
+            {% if post.image %}
 
-                <div align="center" class="p-2"><img class="img-fluid" src="{{ tweet.image.url }}"
-                                                     alt="{{ tweet.author.username }}"></div>
+                <div align="center" class="p-2"><img class="img-fluid" src="{{ post.image.url }}"
+                                                     alt="{{ post.author.username }}"></div>
             {% endif %}
             <div class="media-body p-2">
-                {% add_hashtags_links tweet.content as content %}
+                {% add_hashtags_links post.content as content %}
                 {{ content|safe }}
 
             </div>
@@ -59,14 +59,14 @@
             <div class="row">
                 <div class="col-md-4 text-center">
 
-                    {% user_like_it user.id tweet as user_like_it %}
-                    {% get_number_of_comments tweet as number_of_comments %}
+                    {% user_like_it user.id post as user_like_it %}
+                    {% get_number_of_comments post as number_of_comments %}
 
 
                     <form method="POST" action="{{ request.get_full_path }}">
-                        <small class="font-weight-bold mr-2">Likes: {{ tweet.likes.count }}</small>
+                        <small class="font-weight-bold mr-2">Likes: {{ post.likes.count }}</small>
                         {% csrf_token %}
-                        <input type="hidden" id="tweet_id" name="tweet_id" value="{{ tweet.id }}">
+                        <input type="hidden" id="post_id" name="post_id" value="{{ post.id }}">
                         {% if user_like_it %}
                             <button type="submit" class="btn btn-warning btn-sm">Unlike</button>
                         {% else %}
@@ -80,9 +80,9 @@
 
                 </div>
                 <div class="col-md-4 text-center">
-                    <a href="{% url "tweet-details" tweet.id %}" class="btn btn-primary btn-sm"
+                    <a href="{% url "post-details" post.id %}" class="btn btn-primary btn-sm"
                        role="button"
-                       aria-pressed="true">Go to Tweet</a>
+                       aria-pressed="true">Go to Post</a>
 
                 </div>
             </div>

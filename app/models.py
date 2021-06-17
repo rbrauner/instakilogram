@@ -6,10 +6,10 @@ from django.template.defaultfilters import slugify
 from django.urls import reverse
 
 
-class TwitterUser(AbstractUser):
+class InstaKiloGramUser(AbstractUser):
     full_name = models.CharField(max_length=64, blank=True, null=True)
     about_me = models.TextField(max_length=500, blank=True)
-    following = models.ManyToManyField('TwitterUser', blank=True)
+    following = models.ManyToManyField('InstaKiloGramUser', blank=True)
     avatar = models.ImageField(upload_to='avatars/', default='avatars/default.jpg')
     slug = models.SlugField(max_length=64, unique=True, blank=True)
 
@@ -17,7 +17,7 @@ class TwitterUser(AbstractUser):
         if not self.slug:
             self.slug = slugify(self.username)
 
-        super(TwitterUser, self).save(*args, **kwargs)
+        super(InstaKiloGramUser, self).save(*args, **kwargs)
         avatar = Image.open(self.avatar.path)
         width, height = avatar.size
         if width > 300 or height > 300:
@@ -26,16 +26,16 @@ class TwitterUser(AbstractUser):
             avatar.save(self.avatar.path)
 
 
-class Tweet(Model):
-    author = models.ForeignKey(TwitterUser, on_delete=models.CASCADE)
+class Post(Model):
+    author = models.ForeignKey(InstaKiloGramUser, on_delete=models.CASCADE)
     content = models.TextField(max_length=400)
-    image = models.ImageField(upload_to='tweets/', blank=True, null=True)
+    image = models.ImageField(upload_to='posts/', blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
-    likes = models.ManyToManyField(TwitterUser, related_name='likes', blank=True)
+    likes = models.ManyToManyField(InstaKiloGramUser, related_name='likes', blank=True)
     edited = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
-        super(Tweet, self).save(*args, **kwargs)
+        super(Post, self).save(*args, **kwargs)
         if self.image != None:
             image = Image.open(self.image.path)
             width, height = image.size
@@ -47,15 +47,15 @@ class Tweet(Model):
                 image.save(self.image.path)
 
     def get_absolute_url(self):
-        return reverse('tweet-details', kwargs={'pk': self.pk})
+        return reverse('post-details', kwargs={'pk': self.pk})
 
     def __str__(self):
         return f"{self.id} {self.content[:20]}"
 
 
 class Comment(Model):
-    tweet = models.ForeignKey(Tweet, on_delete=models.CASCADE)
-    author = models.ForeignKey(TwitterUser, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    author = models.ForeignKey(InstaKiloGramUser, on_delete=models.CASCADE)
     content = models.TextField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
 

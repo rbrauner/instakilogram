@@ -1,10 +1,10 @@
 {% extends '../base.html' %}
 {% load bootstrap4 %}
-{% block head_title %}Add tweet{% endblock %}
+{% block head_title %}Add post{% endblock %}
 {% block content %}
 
     <div class="card">
-        <h5 class="card-header text-dark">Add tweet</h5>
+        <h5 class="card-header text-dark">Add post</h5>
         <div class="card-body">
 
             <form method="post" enctype="multipart/form-data">
@@ -17,7 +17,7 @@
                         {% bootstrap_field field %}
                     </div>
                 {% endfor %}
-                <button class="btn btn-primary m-4" type="submit">Add Tweet</button>
+                <button class="btn btn-primary m-4" type="submit">Add Post</button>
             </form>
 
         </div>

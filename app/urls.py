@@ -1,19 +1,19 @@
 from django.urls import path
-from app.views import Home, SearchUsers, UserPublicProfile, UserEditProfile, TweetAdd, TweetDetails, TweetEdit, \
-    TweetDelete, CommentDelete, Hashtags, UserFollowingList, UserTweets
+from app.views import Home, SearchUsers, UserPublicProfile, UserEditProfile, PostAdd, PostDetails, PostEdit, \
+    PostDelete, CommentDelete, Hashtags, UserFollowingList, UserPosts
 
 urlpatterns = [
     path('', Home.as_view(), name='home'),
     path('search/', SearchUsers.as_view(), name='search-users-results'),
     path('profile/<slug>/', UserPublicProfile.as_view(), name='user-public-profile'),
-    path('profile/<slug>/tweets', UserTweets.as_view(), name='user-tweets'),
+    path('profile/<slug>/posts', UserPosts.as_view(), name='user-posts'),
     path('user/profile/edit/', UserEditProfile.as_view(), name='user-edit-profile'),
-    path('tweet/add/', TweetAdd.as_view(), name='tweet-add'),
-    path('tweet/<int:pk>/', TweetDetails.as_view(), name='tweet-details'),
-    path('tweet/<int:pk>/edit/', TweetEdit.as_view(), name='tweet-edit'),
-    path('tweet/<int:pk>/delete/', TweetDelete.as_view(), name='tweet-delete'),
+    path('post/add/', PostAdd.as_view(), name='post-add'),
+    path('post/<int:pk>/', PostDetails.as_view(), name='post-details'),
+    path('post/<int:pk>/edit/', PostEdit.as_view(), name='post-edit'),
+    path('post/<int:pk>/delete/', PostDelete.as_view(), name='post-delete'),
     path('comment/<int:pk>/delete/', CommentDelete.as_view(), name='comment-delete'),
-    path('hashtag/<slug>/', Hashtags.as_view(), name='tweet-hashtag'),
+    path('hashtag/<slug>/', Hashtags.as_view(), name='post-hashtag'),
     path('following/', UserFollowingList.as_view(), name='user-following-list'),
 
 ]

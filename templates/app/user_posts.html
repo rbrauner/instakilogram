@@ -1,11 +1,16 @@
-{% extends '../base.html' %}
-{% block head_title %}Hashtag{% endblock %}
+{% extends 'base.html' %}
+
+{% block head_title %}My posts{% endblock %}
+
+{% load base_tags %}
+
 
 {% block content %}
 
+
     <div class="card border-0">
-        {% for tweet in tweet_list %}
-         {% include 'app/single_tweet.html' %}
+        {% for post in post_list %}
+             {% include 'app/single_post.html' %}
         {% endfor %}
 
         {% if is_paginated %}

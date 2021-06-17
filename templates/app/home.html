@@ -9,8 +9,8 @@
 
 
     <div class="card border-0">
-        {% for tweet in tweet_list %}
-             {% include 'app/single_tweet.html' %}
+        {% for post in post_list %}
+             {% include 'app/single_post.html' %}
         {% endfor %}
 
         {% if is_paginated %}

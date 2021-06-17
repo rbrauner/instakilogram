@@ -1,16 +1,16 @@
 {% extends "../base.html" %}
 
 
-{% block head_title %}Delete Tweet{% endblock %}
+{% block head_title %}Delete Post{% endblock %}
 
 {% block content %}
 
     <div class="card">
-        <h5 class="card-header text-dark">Delete Tweet</h5>
+        <h5 class="card-header text-dark">Delete Post</h5>
         <div class="card-body">
-            <p>Are you sure you want to delete tweet?</p>
+            <p>Are you sure you want to delete post?</p>
 
-            <form method="post" action="{% url 'tweet-delete' pk %}">
+            <form method="post" action="{% url 'post-delete' pk %}">
                 {% csrf_token %}
                 <input type="hidden" name="confirm_delete" value="confirm_delete"/>
                 <button class="btn btn-danger" type="submit">Delete</button>

@@ -31,7 +31,7 @@
 
                     <thead>
                     <tr>
-                        <th scope="col" class="text-center">Tweets</th>
+                        <th scope="col" class="text-center">Posts</th>
                         <th scope="col" class="text-center">Following</th>
                         <th scope="col" class="text-center">Followers</th>
                     </tr>
@@ -39,10 +39,10 @@
                     <tbody>
                     <tr>
 
-                        {% get_number_of_tweets object as number_of_tweets %}
+                        {% get_number_of_posts object as number_of_posts %}
                         {% get_number_of_followers object as number_of_followers %}
 
-                        <td class="text-center">{{ number_of_tweets }}</td>
+                        <td class="text-center">{{ number_of_posts }}</td>
                         <td class="text-center">{{ object.following.count }}</td>
                         <td class="text-center">{{ number_of_followers }}</td>
                     </tr>
@@ -90,8 +90,8 @@
                         {% endif %}
 
                         <div class="p-2">
-                            <a href="{% url 'user-tweets' object.slug %}" class="btn btn-primary" role="button"
-                               aria-pressed="true">Tweets</a>
+                            <a href="{% url 'user-posts' object.slug %}" class="btn btn-primary" role="button"
+                               aria-pressed="true">Posts</a>
                         </div>
 
 

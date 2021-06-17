@@ -7,12 +7,12 @@
         <h5 class="card-header">My following list</h5>
         <div class="card-body">
             <ul class="list-group">
-                {% for user_on_list in twitteruser_list %}
+                {% for user_on_list in instakilogramuser_list %}
                     <li class="list-group-item align-items-center">
                         <a href="{% url 'user-public-profile' user_on_list.slug %}" class="btn btn-link"
                            style="text-decoration: none">
                             <h5><img src="{{ user_on_list.avatar.url }}" width="35px" height="35px"
-                                     alt="{{ tweet.user.username }}"
+                                     alt="{{ post.user.username }}"
                                      class="rounded-circle pull-left">
                                 {% if user_on_list.full_name %}
                                     {{ user_on_list.full_name }}

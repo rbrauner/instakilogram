@@ -36,7 +36,7 @@
 
                 <div class=" p-2">
                     <small class="pull-right text-right text-dark">{{ object.created }}  {% if object.edited %}
-                        (Tweet was edited) {% endif %}</small>
+                        (Post was edited) {% endif %}</small>
                 </div>
                 {% if user == object.author %}
                     <a class="btn-sm nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -45,8 +45,8 @@
                         Options
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'tweet-edit' object.id %}">Edit</a>
-                        <a class="dropdown-item" href="{% url 'tweet-delete' object.id %}">Delete</a>
+                        <a class="dropdown-item" href="{% url 'post-edit' object.id %}">Edit</a>
+                        <a class="dropdown-item" href="{% url 'post-delete' object.id %}">Delete</a>
                     </div>
 
                 {% endif %}
@@ -61,7 +61,7 @@
                                                          alt="{{ object.author.username }}"></div>
                 {% endif %}
                 <div class="media-body p-2">
-                    {% add_hashtags_links tweet.content as content %}
+                    {% add_hashtags_links post.content as content %}
                     {{ content|safe }}
 
                 </div>
@@ -72,10 +72,10 @@
                     <div class="col-md-6 text-center">
 
 
-                        <form method="POST" action="{% url 'tweet-details' object.id %}">
+                        <form method="POST" action="{% url 'post-details' object.id %}">
                             <small class="font-weight-bold mr-2">Likes: {{ object.likes.count }}</small>
                             {% csrf_token %}
-                            <input type="hidden" id="tweet_id" name="tweet_id" value="{{ object.id }}">
+                            <input type="hidden" id="post_id" name="post_id" value="{{ object.id }}">
                             {% if user_like_it %}
                                 <button type="submit" class="btn btn-warning btn-sm">Unlike</button>
                             {% else %}
@@ -149,7 +149,7 @@
 
     <div align="center" class="m-3">
 
-        <form action="{% url 'tweet-details' object.id %}" method="post">
+        <form action="{% url 'post-details' object.id %}" method="post">
             {% csrf_token %}
             <input type="hidden" id="add_comment" name="add_comment" value="1">
             <div>
