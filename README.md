@@ -17,12 +17,6 @@ InstaKiloGram is a simple Instagram clone web app built with Django and Bootstra
       Username: admin
       Password: admin
 
-## Installation
-  1. `pip install -r requirements.txt`
-  1. `python manage.py makemigrations`
-  1. `python manage.py migrate`
-  1. `python manage.py runserver`
-
 ## Documentation
 
 ### Structure
@@ -49,3 +43,15 @@ InstaKiloGram is a simple Instagram clone web app built with Django and Bootstra
   - manage.py - file used by Django to managing app using cli
   - README.md - help file
   - requirements.txt - all depenedencies used by app
+
+### Installation
+  1. `pip install -r requirements.txt`
+
+### Making migration (creating class in `app/migrations` which consists of models snapshoot)
+  1. `python manage.py makemigrations`
+
+### Migrate (update db schemat using migrations)
+  1. `python manage.py migrate`
+
+### Run application
+  1. `python manage.py runserver`
