@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class InstaKilogramConfig(AppConfig):
+class InstaKiloGramConfig(AppConfig):
     name = 'app'
