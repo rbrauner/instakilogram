@@ -1,6 +1,13 @@
 # InstaKiloGram
 InstaKiloGram is a simple Instagram clone web app built with Django and Bootstrap
 
+## Authors
+  - Ryszard Orlikowski
+  - Rafał Brauner
+  - Dawid Piela
+  - Sebastian Słomka
+  - Kacper Czarnik
+
 ## Features
   - User registration, login
   - User profile with avatar
